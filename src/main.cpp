@@ -12,7 +12,7 @@ int main()
 	while(window.isOpen())
 	{
 		Event event;
-		
+
 		while(window.pollEvent(event))
 		{
 			if(event.type == Event::Closed)
@@ -20,10 +20,11 @@ int main()
 				window.close();
 			}
 		}
+
 		window.clear();
 		window.draw(shape);
 		window.display();
 	}
-	
+
 	return 0;
 }
