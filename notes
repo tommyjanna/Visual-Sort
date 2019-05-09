@@ -1,0 +1,2 @@
+g++ -c src/main.cpp -o obj/main.o
+g++ obj/main.o -o bin/visualsort -lsfml-graphics -lsfml-window -lsfml-system
