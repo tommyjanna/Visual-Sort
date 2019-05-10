@@ -1,4 +1,6 @@
+#include <ctime>
 #include <SFML/Graphics.hpp>
+#include "List.h"
 
 using namespace sf;
 
@@ -8,6 +10,8 @@ int main()
 
 	CircleShape shape(100.f);
 	shape.setFillColor(Color::Blue);
+	
+	srand(time(nullptr));
 
 	while(window.isOpen())
 	{
