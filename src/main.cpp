@@ -10,7 +10,7 @@ int main()
 
 	CircleShape shape(100.f);
 	shape.setFillColor(Color::Blue);
-	
+
 	srand(time(nullptr));
 
 	while(window.isOpen())

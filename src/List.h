@@ -26,6 +26,7 @@ private:
 	};
 
 	int size;
+	Node* contents[20];
 };
 
 #endif
