@@ -33,6 +33,7 @@ void List::Shuffle()
 	
 	for(int i = 0; i < size; i++)
 	{
+		// Pick random position in array to swap each Node with.
 		nodeToSwap = rand() % size;
 		tempNode = nodes[nodeToSwap];
 		nodes[nodeToSwap] = nodes[i];
