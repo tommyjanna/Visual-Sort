@@ -16,21 +16,24 @@ using namespace sf;
 int main()
 {
 	RenderWindow window(VideoMode(SCREEN_WIDTH, SCREEN_HEIGHT), "Visual Sort");
+	Event event;
 
-	// Number of elements in list.
+	// Creates list of unique numbers in order from 1 - SIZE.
 	List list(SIZE);
+	
 	
 	srand(time(nullptr));
 	
+	// Randomize the list.
 	list.Shuffle();
-	list.Draw();
+	// Set sort flag to true.
 	list.Sort();
 
 	while(window.isOpen())
 	{
-		Event event;
+		/// INPUT
 
-		while(window.pollEvent(event)) // Handle any input.
+		while(window.pollEvent(event)) // Obtain next input in queue.
 		{
 			if(event.type == Event::Closed) // X button is pressed.
 			{
@@ -38,16 +41,22 @@ int main()
 			}
 		}
 		
-		list.Draw();
+		/// SORTING
 		
-		if(list.IsSorting())
+		if(list.IsSorting()) // Not finished sorting.
 		{
+			// Run next sort step.
 			list.BubbleSortStep();
 		}
 		
+		/// RENDERING
+		
+		// Update all items in list to be drawn.
+		list.Draw();
+		
 		window.clear();
 		
-		for(int i = 0; i < SIZE; i++)
+		for(int i = 0; i < SIZE; i++) // Draw each node in list.
 		{
 			window.draw(list.GetNodeAt(i)->rectangle);
 		}

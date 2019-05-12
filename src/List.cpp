@@ -18,6 +18,7 @@ List::List(int _size)
 	
 	size = _size;
 
+	// Generates list from 1 - size.
 	for(int i = 0; i < size; i++)
 	{
 	    newNode = new Node(i + 1);
@@ -45,18 +46,21 @@ void List::BubbleSortStep()
 {
 	Node* tempNode;
 	
-	if(currentSortIndex != 0)
+	if(currentSortIndex != 0) // If isn't first comparison, reset colours to white.
 	{
 		nodes[currentSortIndex - 1]->SetColour(Color::White);
 		nodes[currentSortIndex]->SetColour(Color::White);
 	}
-	if(currentSortIndex < size - currentIndex - 1)
+	
+	if(currentSortIndex < size - currentIndex - 1) // Haven't compared with all items.
 	{
+		// Set comparing nodes to red.
 		nodes[currentSortIndex]->SetColour(Color::Red);
 		nodes[currentSortIndex + 1]->SetColour(Color::Red);
 	
-		if(nodes[currentSortIndex]->GetContent() > nodes[currentSortIndex + 1]->GetContent())
+		if(nodes[currentSortIndex]->GetContent() > nodes[currentSortIndex + 1]->GetContent()) // Comparison
 		{
+			// Swap nodes.
 			tempNode = nodes[currentSortIndex+ 1];
 			nodes[currentSortIndex + 1] = nodes[currentSortIndex];
 			nodes[currentSortIndex] = tempNode;
@@ -68,7 +72,7 @@ void List::BubbleSortStep()
 		sleep(milliseconds(100));
 	}
 	
-	else
+	else // Reached end of list, restart with higher (lower) finish index.
 	{
 		currentSortIndex = 0;
 		currentIndex++;
@@ -99,8 +103,12 @@ void List::Sort()
 }
 void List::Draw()
 {	
-	for(int i = 0; i < size; i++)
+	for(int i = 0; i < size; i++) // For each node in list.
 	{
+		// Draw such that,
+		//					There is a 10 px margin from the bottom, left and top.
+		//					Each bar has 5 px between it and another bar.
+		//					NOTE: SFML counts from the top left as the origin.
 		nodes[i]->Draw(10 + ((SCREEN_WIDTH - 20) / SIZE) * i,
 						SCREEN_HEIGHT - 10 - nodes[i]->GetHeight());
 	}
@@ -116,6 +124,7 @@ List::Node::Node(int _content)
 	// Devided by size (max value) then multiply by content for ratio.
 	height = (SCREEN_HEIGHT - 20) / SIZE * content;
 
+	// Constant width across all bars.
 	width = (SCREEN_WIDTH - 20) / SIZE - 5;
 
     rectangle.setSize(Vector2f(width, height));
@@ -145,6 +154,5 @@ void List::Node::SetColour(Color _colour)
 
 void List::Node::Draw(int _xPos, int _yPos)
 {
-	rectangle.setPosition(_xPos, _yPos);
-	
+	rectangle.setPosition(_xPos, _yPos);	
 }

@@ -19,19 +19,18 @@ using namespace sf;
 
 class List
 {
-		
 private:
 	// Nested class Node representing each item in the list.
 	class Node
 	{
 	public:
-		Node(int);
+		Node(int); // Creates node given content.
 		int GetContent();
 		void SetContent(int);
 		int GetHeight();
 		void SetColour(Color);
 		
-		void Draw(int, int);
+		void Draw(int, int); // Updates rect position given (x, y).
 		
 		RectangleShape rectangle;
 	private:
@@ -40,22 +39,24 @@ private:
 	};
 
 	int size;
-	Node* nodes[20];
+	Node* nodes[SIZE];
 	
+	// Keeps track of position in the sort process.
 	int currentSortIndex;
 	int currentIndex;
 	
+	// Is list still being sorted?
 	bool sorting;
 		
 public:
-	List(int);
+	List(int); // Creates list given size.
 	
-	void BubbleSortStep();
-	void Shuffle();
-	Node* GetNodeAt(int);
-	bool IsSorting();
-	void Sort();
-	void Draw();
+	void BubbleSortStep(); // Preforms one step of the bubble sort algorithm.
+	void Shuffle(); // Swap each item a new random location in the array.
+	Node* GetNodeAt(int); // Return node at given position in array.
+	bool IsSorting(); // Returns if list is still being sorted.
+	void Sort(); // Set sort flag to true.
+	void Draw(); // Decides how to arrange Nodes the calls each Draw().
 };
 
 #endif
