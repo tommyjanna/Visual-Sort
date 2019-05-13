@@ -1,4 +1,4 @@
-# visualsort
+# Visual Sort
 An assignment for ICS4U. The goal is to create a visualization of the Bubble Sort sorting algorithm using the [SFML framework](https://www.sfml-dev.org/index.php).
 
 ## Dependencies
